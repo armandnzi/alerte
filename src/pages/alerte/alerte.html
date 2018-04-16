@@ -1,0 +1,123 @@
+<ion-header>
+    <ion-navbar color="btnAccueil">
+        <ion-title>
+            Formulaire d'alerte
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <h5 color="btnAccueil">CLIENT</h5>
+    <hr>
+    <form [formGroup]="frmAlerte" (ngSubmit)="sendAlert(frmAlerte.value)">
+        <ion-item>
+            <ion-label color="primary" floating>Nom <span class="required">*</span></ion-label>
+            <ion-input formControlName="nom" id="nom"></ion-input>
+        </ion-item>
+
+        <!-- AFFICHAGE MESSAGE D'ERREUR POUR NOM !-->
+        <ion-item *ngIf="frmAlerte.controls.nom.hasError('required') && frmAlerte.controls.nom.touched">
+            <p class="required">Désolé,ce champ est obligatoire!</p>
+        </ion-item>
+        <ion-item *ngIf="frmAlerte.controls.nom.hasError('minlength') && frmAlerte.controls.nom.touched">
+            <p class="required">Désolé, votre nom doit faire au moins 3 lettres</p>
+        </ion-item>
+        <ion-item *ngIf="frmAlerte.controls.nom.hasError('maxlength') && frmAlerte.controls.nom.touched">
+            <p class="required">Désolé, votre nom doit faire au plus 15 lettres</p>
+        </ion-item>
+
+
+
+        <ion-item>
+            <ion-label color="primary" floating>Prenoms <span class="required">*</span></ion-label>
+            <ion-input formControlName="prenom"></ion-input>
+        </ion-item>
+
+        <!-- AFFICHAGE MESSAGE D'ERREUR POUR PRENOM !-->
+        <ion-item *ngIf="frmAlerte.controls.prenom.hasError('required') && frmAlerte.controls.prenom.touched">
+            <p class="required">Désolé,ce champ est obligatoire!</p>
+        </ion-item>
+
+        <ion-item *ngIf="frmAlerte.controls.prenom.hasError('maxlength') && frmAlerte.controls.prenom.touched">
+            <p class="required">Désolé, votre prénoms doit faire au plus 100 lettres</p>
+        </ion-item>
+
+
+
+        <ion-item>
+            <ion-label color="primary" floating>Cellulaire <span class="required">*</span></ion-label>
+            <ion-input type="number" formControlName="phone"></ion-input>
+        </ion-item>
+
+        <!-- AFFICHAGE MESSAGE D'ERREUR POUR CEL !-->
+        <ion-item *ngIf="frmAlerte.controls.prenom.hasError('required') && frmAlerte.controls.prenom.touched">
+            <p class="required">Désolé,ce champ est obligatoire!</p>
+        </ion-item>
+
+        <ion-item *ngIf="frmAlerte.controls.phone.hasError('maxlength') && frmAlerte.controls.phone.touched">
+            <p class="required">Désolé, votre numéro doit faire au plus 08 chiffres</p>
+        </ion-item>
+        <ion-item *ngIf="frmAlerte.controls.prenom.hasError('minlength') && frmAlerte.controls.phone.touched">
+            <p class="required">Désolé, votre numéro doit faire au moins 08 chiffres</p>
+        </ion-item>
+
+        <ion-item *ngIf="frmAlerte.controls.phone.hasError('pattern') && frmAlerte.controls.phone.touched">
+            <p class="required">Désolé, ce numéro semble être un fixe</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" floating>Reférence CIE</ion-label>
+            <ion-input type="text" formControlName="ref"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Email</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <h5 color="btnAccueil">ALERTE</h5>
+        <ion-item>
+            <ion-label>Catégorie alerte <span class="required">*</span></ion-label>
+            <ion-select okText="OK" cancelText="ANNULER" #i (ionChange)="onChange(i.value)" formControlName="idCat">
+                <ion-option *ngFor="let cat of cats" value="{{ cat.idCat }}">{{ cat.libCat }}</ion-option>
+
+            </ion-select>
+        </ion-item>
+
+        <ion-item [ngClass]="{'hide':!autre}">
+            <ion-label>Autre <span class="required">*</span></ion-label>
+            <ion-input type="text" formControlName="autreCat"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Localisation alerte <span class="required">*</span></ion-label>
+            <ion-select #l (ionChange)="villeQtier(l.value)" okText="OK" cancelText="ANNULER" formControlName="local">
+                <ion-option disabled>District</ion-option>
+                <ion-option *ngFor="let d of dist" value="D {{ d.idDist }}">{{ d.libDist }}</ion-option>
+                <ion-option disabled>Commune</ion-option>
+                <ion-option *ngFor="let c of com" value="C {{ c.idCom }}">{{ c.nomCom }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Ville/quartier <span class="required">*</span></ion-label>
+            <ion-select id="vQ" okText="OK" cancelText="ANNULER" formControlName="zone">
+                <ion-option *ngFor="let v of ville" value="{{ v.idVil }}">{{ v.libVil }}</ion-option>
+                <ion-option *ngFor="let q of qtier" value="{{ q.idZone }}">{{ q.libZone }}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Votre message <span class="required">*</span></ion-label>
+            <ion-textarea rows="3" cols="10" maxlength="160" formControlName="message">
+
+            </ion-textarea>
+        </ion-item>
+        <div id="btnPlac">
+            <button class="btnPlace" ion-button color="btnAccueil" type="submit" [disabled]="!frmAlerte.valid">Valider</button>
+            <button class="btnPlace" ion-button color="btnAccueil" type="reset">Annuler</button>
+        </div>
+    </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <span>Direction Générale de l'Energie 2018 &copy;</span>
+    </ion-toolbar>
+</ion-footer>

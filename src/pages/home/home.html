@@ -1,14 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="btnAccueil">
+        <ion-title>
+            GESTION ALERTE
+
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <div class="img">
+        <img src="assets/imgs/logodge.png" alt="" width="90" height="90">
+
+    </div>
+
+
+    <!--   <h4>BIENVENUE SUR LA PLATE-FORME DES ALERTES</h4> -->
+    <p>
+        Bienvenue sur la plate-forme de suivi et evaluation des préoccupations des abonnés/DGE
+    </p>
+    <p>
+        Cette application est disponible pour prendre en compte toutes vos préoccupations et les traiter dans les meilleurs délais.
+    </p>
+    <p style="margin-top:20px;">
+        <button style="margin-bottom:20px;" ion-button full color="btnAccueil" (tap)="frmAlerte()">ENREGISTRER UNE ALERTE</button>
+
+        <button ion-button full color="btnAccueil" (tap)="frmRelance()">RELANCER UNE ALERTE</button>
+
+    </p>
+
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <span>Direction Générale de l'Energie 2018 &copy;</span>
+    </ion-toolbar>
+</ion-footer>

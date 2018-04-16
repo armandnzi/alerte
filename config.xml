@@ -1,8 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>DGEAPP</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget id="armand.alerte.ci" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Alerte</name>
+    <description>
+    DGE ALERTE est une application du ministère de l'énergie de la Côte d'Ivoire qui permet de se rapprocher 
+    des abonnés du réseau électrique.Les abonnés non satisfaits du travail des entreprises exerçant dans le domaine 
+    de l'électricité pourront signaler une alerte via l'application.Chaque catégorie d'alerte est traitée par l'entité
+     adéquate(DGE,ANARE,CI-ENRGIES,CIE).L'application se charge de ventiler automatiquement les différentes alerte.
+     Une fois une alerte lancée l'utilisateur recevra un SMS lui informant de la réception de son alerte.
+     Lorsque l'alerte sera traitée l'utilisateur recevra encore un SMS l'informant de la résolution de 
+     sa préoccupation.Toutefois il pourra relancer l'alerte si sa n'a pas été traitée.
+    </description>
+    <author email="nzikoffiarmand@gmail.com" href="http://alerte-electricite.ci/">Holmess Designer</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -11,6 +19,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
@@ -81,4 +90,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <engine name="android" spec="^7.0.0" />
 </widget>
